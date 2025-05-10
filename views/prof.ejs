@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <script src="./js/color-modes.js"></script>
+    <link
+      rel="stylesheet"
+      href="./bootstrap-icons-1.10.5/font/bootstrap-icons.min.css"
+    />
+    <link rel="shortcut icon" href="./img/image.png" type="image/x-icon" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.112.5" />
+    <title>Management</title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./css/dark-light.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="./css/sidebars.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/myStyle.css" />
+ 
+      <style>
+    .upload-form {
+      border: 1px solid rgb(7, 116, 254);
+      /* padding: 20px; */
+      border-radius: 25px 25px 2px 2px;
+      overflow: hidden;
+      width: 400px;
+      height: 600px;
+      margin: 90px auto 0;
+      text-align: center;
+      direction: ltr;
+    }
+
+    .upload-form h2 {
+      background-color: rgb(7, 116, 254);
+      color: white;
+      padding: 20px 10px;
+      margin-top: 0;
+    }
+
+    .upload-form input,
+    .upload-form button {
+      margin-top: 10px;
+    }
+
+    .upload-form button {
+      background-color: rgb(7, 116, 254);
+      color: white;
+      border: none;
+      font-size: 19px;
+      padding: 10px 60px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .upload-form button:hover {
+      background-color: rgb(13, 94, 199);
+    }
+    .inppt{
+      border: none;
+      border-radius: 14px;
+      outline: none;
+      background-color: rgba(74, 74, 74, 0.185);
+      padding: 9px 9px 9px 12px;
+     
+    }
+      </style>
+
+  </head>
+
+
+  
+  <body>
+    <%- include('./Components/dark-light.ejs') %>
+        <%- include('./Components/navbar.ejs') %>
+
+
+
+
+
+
+    <main class="d-flex flex-nowrap">
+      <%- include('./Components/sidebarHome.ejs', {currentPage: "prof"}) %>
+
+
+      
+
+
+
+     
+        <!-- <h2>رفع ملف PDF</h2>
+
+        <form action="/upload" style="margin-top: 220px;" method="POST" enctype="multipart/form-data">
+          <input type="text" name="name" placeholder="اسم الأستاذ" required />
+          <br><br>
+          <input type="file" name="pdf" accept="application/pdf" required />
+          <br><br>
+          <button type="submit">رفع</button>
+        </form> -->
+
+
+    <!-- <form class="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+        <h2> Upload PDF</h2>
+        <br>
+        <input type="text" class="inppt" name="name" placeholder="Name Prof " required />
+        <br><br>
+        <input style="margin-right:22px ;" type="file" name="pdf" accept="application/pdf" required />
+        <br><br>
+        <button type="submit">Send</button>
+        <br>
+        <div id="result"></div>
+
+     </form> -->
+<form class="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+  <h2> Upload PDF</h2>
+  <br>
+  <input type="text" class="inppt" name="name" placeholder="Name Prof" required />
+  <br><br>
+  <input style="margin-right:22px;" type="file" name="pdf" accept="application/pdf" required />
+  <br><br>
+  <button type="submit">Send</button>
+  <br>
+  <div id="result"></div>
+</form>
+
+
+
+
+      <!-- Mini modal for code input -->
+          <div id="codePrompt" style="display: none; position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%);
+          background: rgba(65, 73, 85, 0.503); padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); z-index: 1000;">
+            <p style="color: rgb(190, 185, 185); background-color: rgba(65, 73, 85, 0.792);" class="p-1">🔒 Enter code :</p>
+            
+            <!-- <input type="password" id="codeInput" class="form-control mb-2" /> -->
+            <form onsubmit="event.preventDefault(); checkCode();">
+              <input type="password" id="codeInput" class="form-control mb-2" />
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="button" onclick="closePrompt()" class="btn btn-secondary">Cancel</button>
+            </form>
+
+            
+            <!-- <button onclick="checkCode()" class="btn btn-primary">Submit</button>
+            <button onclick="closePrompt()" class="btn btn-secondary">Cancel</button>
+             -->
+            
+          </div>
+
+
+
+
+    </main>
+
+
+
+
+
+<!-- <script>
+  const form = document.querySelector(".upload-form");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    fetch("/upload", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const resultDiv = document.getElementById("result");
+        if (data.message) {
+          resultDiv.innerHTML = `<p>${data.message}</p>`;
+        }
+        if (data.profData) {
+          resultDiv.innerHTML += `<p>بيانات الأستاذ: ${JSON.stringify(data.profData)}</p>`;
+        }
+        if (data.filePath) {
+          resultDiv.innerHTML += `<p>تم رفع الملف بنجاح. المسار: ${data.filePath}</p>`;
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        document.getElementById("result").innerHTML = "<p>حدث خطأ أثناء الرفع</p>";
+      });
+  });
+</script> -->
+<script>
+  const form = document.querySelector(".upload-form");
+  const confirmModal = document.getElementById("confirmModal");
+  const confirmSendBtn = document.getElementById("confirmSend");
+  const resultDiv = document.getElementById("result");
+
+  let tempFormData = null;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // تعطيل الأزرار والحقول عند الإرسال
+    const submitBtn = form.querySelector("button[type='submit']");
+    const nameInput = form.querySelector("input[name='name']");
+    const fileInput = form.querySelector("input[name='pdf']");
+
+    submitBtn.disabled = true;
+    submitBtn.style.cursor = "not-allowed";
+    nameInput.disabled = true;
+    fileInput.disabled = true;
+    resultDiv.innerHTML = "<p style='color: gray;'>📤 جاري التحقق من الأستاذ...</p>";
+
+    const formData = new FormData(form);
+    const name = formData.get("name");
+
+    fetch("/check-prof", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name })
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.exists) {
+        tempFormData = formData;
+        confirmModal.style.display = "block";
+      } else {
+        resultDiv.innerHTML = `<p style="color:red;">❌ هذا الأستاذ غير موجود</p>`;
+        // إعادة التمكين في حال الخطأ
+        submitBtn.disabled = false;
+        submitBtn.style.cursor = "pointer";
+        nameInput.disabled = false;
+        fileInput.disabled = false;
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      resultDiv.innerHTML = "<p style='color:red;'>حدث خطأ أثناء التحقق ❌</p>";
+      submitBtn.disabled = false;
+      submitBtn.style.cursor = "pointer";
+      nameInput.disabled = false;
+      fileInput.disabled = false;
+    });
+  });
+
+  confirmSendBtn.addEventListener("click", () => {
+    if (!tempFormData) return;
+
+    resultDiv.innerHTML = "<p style='color: gray;'>📤 جاري رفع الملف...</p>";
+
+    fetch("/upload", {
+      method: "POST",
+      body: tempFormData
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      resultDiv.innerHTML = `<p style="color:green;">✅ ${data.message}</p>`;
+      closeModal();
+      tempFormData = null;
+    })
+    .catch((err) => {
+      console.error(err);
+      resultDiv.innerHTML = "<p style='color:red;'>❌ حدث خطأ أثناء رفع الملف</p>";
+      closeModal();
+    });
+  });
+
+  function closeModal() {
+    confirmModal.style.display = "none";
+  }
+</script>
+
+    
+    <script src="./js/main.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+
+    <script src="./js/sidebars.js"></script>
+
+  </body>
+</html>

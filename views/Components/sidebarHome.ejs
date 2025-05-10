@@ -1,0 +1,90 @@
+
+<style>
+  .sidebar {
+  z-index: 1040;
+  height: 100vh;
+}
+
+</style>
+
+<!-- Sidebar Desktop -->
+<div id="sidebarId" class="d-none d-md-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar">
+
+  <span style="right: 10px; top: 4px" class="position-absolute">
+    <button class="btn" onclick="toggleSidebar()">
+      <i class="bi bi-x-circle"></i>
+    </button>
+  </span>
+
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <i class="bi bi-lightning-charge"></i>
+    <span class="fs-4 sidebar-text">Management</span>
+  </a>
+
+  <hr />
+
+  <!-- قائمة التنقل -->
+  <div id="sidebarContent">
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li>
+        <a href="/" onclick="promptCode('../user/add.html', 'addProf')" class="nav-link mb-1 text-white <%= currentPage === 'welcom' ? 'active' : null %>">
+          <i class="fa-solid fa-hand"></i>
+          <span style="margin-left: 25px;" class="sidebar-text"> Welcome </span>
+        </a>
+      </li>
+
+      <li class="nav-item mb-1">
+        <a href="#" onclick="showCodePrompt('admin', '/admin')" class="nav-link text-white <%= currentPage === 'admin' ? 'active' : '' %>">
+          <i class="fa-solid fa-lock"></i>
+          <span style="margin-left: 20px;" class="sidebar-text"> Admin </span>
+        </a>
+      </li>
+
+      <li class="nav-item mb-1">
+        <a href="/Prof" class="nav-link text-white <%= currentPage === 'prof' ? 'active' : '' %>">
+          <i class="fa-solid fa-user-tie"></i>
+          <span style="margin-left: 20px;" class="sidebar-text"> Prof </span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/Etud" class="nav-link text-white <%= currentPage === 'Etud' ? 'active' : '' %>">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span style="margin-left: 25px;" class="sidebar-text"> Etudient </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+
+      <div class="b-example-divider b-example-vr"></div>
+
+
+
+
+
+
+      <!-- Offcanvas Sidebar للجوال -->
+<div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="mobileSidebarLabel">Menu</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" id="offcanvasContent">
+    <!-- سيتم نسخ محتوى الـ sidebar هنا -->
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sidebarContent = document.getElementById('sidebarContent');
+    const offcanvasContent = document.getElementById('offcanvasContent');
+
+    if (sidebarContent && offcanvasContent) {
+      offcanvasContent.innerHTML = sidebarContent.innerHTML;
+    }
+  });
+</script>

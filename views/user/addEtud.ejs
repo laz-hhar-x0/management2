@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <script src="../js/color-modes.js"></script>
+    <link
+      rel="stylesheet"
+      href="../bootstrap-icons-1.10.5/font/bootstrap-icons.min.css"
+    />
+    <link rel="shortcut icon" href="../img/image.png" type="image/x-icon">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.112.5" />
+    <title>Management</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/dark-light.css">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/sidebars.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/myStyle.css" />
+
+
+  </head>
+  <body>
+    <%- include('../Components/dark-light.ejs') %>
+
+
+      <!-- Offcanvas Mobile Sidebar -->
+      <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="mobileSidebarLabel">Menu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item mb-1">
+              <a href="/" class="nav-link text-white">
+                <i class="fa-solid fa-list"></i> List Profs
+              </a>
+            </li>
+            <li class="nav-item mb-1">
+              <a href="/listEtud" class="nav-link text-white">
+                <i class="fa-solid fa-list-check"></i> List Etudiants
+              </a>
+            </li>
+            <li class="nav-item mb-1">
+              <a href="#" onclick="promptCode('../user/add.html')" class="nav-link text-white">
+                <i class="fa-solid fa-user-tie"></i> Add Profs
+              </a>
+            </li>
+            <li class="nav-item mb-1">
+              <a href="#" onclick="promptCode('../user/addEtud')" class="nav-link text-white">
+                <i class="fa-solid fa-graduation-cap"></i> Add Etudiant
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+    <main class="d-flex flex-nowrap">
+
+      <section class="w-100">
+        <%- include('../Components/navbar.ejs') %>
+
+        <form action="/user/addEtud" method="post" class="mx-0 row gx-3 gy-4 mt-3">
+          <div class="col-md-6">
+            <label for="inputfirstName4" class="form-label">First Name:</label>
+            <input
+            name="firstName"
+              placeholder="First name"
+              type="text"
+              class="form-control"
+              id="inputfirstName4"
+            />
+          </div>
+          
+          <div class="col-md-6">
+            <label for="inputlastName4" class="form-label">Last Name:</label>
+            <input
+            name="lastName"
+              placeholder="Last name"
+              type="text"
+              class="form-control"
+              id="inputlastName4"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputemail4" class="form-label">Email:</label>
+            <input
+            name="email"
+              placeholder="Management@gmail.com"
+              type="email"
+              class="form-control"
+              id="inputemail4"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="inputtele4" class="form-label">Telephone:</label>
+            <input
+            name="phoneNumber"
+              placeholder="+213779791498"
+              type="number"
+              class="form-control"
+              id="inputtele4"
+            />
+          </div>
+
+          
+          <div>
+            <div class="col-md-6">
+              <label for="inputCountry" class="form-label">specialty:</label>
+              <select name="specialty" id="inputCountry" class="form-select">
+                <option selected hidden disabled>Choose here ...</option>
+
+
+
+              <%  var specialty_list = ["informatique","droi","math","medcin","biology","chemi","fisic","Economi","Sociology","Arts"]; %>
+
+                <% specialty_list.forEach(item => { %>
+                  <option> <%= item %> </option>
+                <% }) %>
+       
+              </select>
+            </div>
+          </div>
+
+
+          <div>
+            <div class="col-md-6">
+              <label for="inputage4" class="form-label">Year:</label>
+              <input
+              name="anne"
+                placeholder="Year ..."
+                type="number"
+                class="form-control"
+                id="inputage4"
+              />
+            </div>
+          </div>
+
+
+          <div>
+            <div class="col-md-6">
+              <label for="inputage4" class="form-label">matricule:</label>
+              <input
+              name="matricule"
+                placeholder="matricule ..."
+                type="number"
+                class="form-control"
+                id="inputage4"
+              />
+            </div>
+          </div>
+         
+
+          
+
+          <div class="col-12">
+            <button type="submit" class="btn" style="background-color: #0D7C66; color:rgb(255, 255, 255);">Submit</button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+
+    <script src="../js/sidebars.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
