@@ -129,8 +129,8 @@
   <br><br>
   <button type="submit">Send</button>
   <br>
+  <br>
   <div id="result"></div>
-</form>
 
 
 
@@ -192,7 +192,8 @@
       });
   });
 </script> -->
-<script>
+
+<!-- <script>
   const form = document.querySelector(".upload-form");
   const confirmModal = document.getElementById("confirmModal");
   const confirmSendBtn = document.getElementById("confirmSend");
@@ -238,7 +239,7 @@
     })
     .catch((err) => {
       console.error(err);
-      resultDiv.innerHTML = "<p style='color:red;'>حدث خطأ أثناء التحقق ❌</p>";
+      resultDiv.innerHTML = "<p style='color:red;'>❌ حدث خطأ أثناء التحقق </p>";
       submitBtn.disabled = false;
       submitBtn.style.cursor = "pointer";
       nameInput.disabled = false;
@@ -271,13 +272,13 @@
   function closeModal() {
     confirmModal.style.display = "none";
   }
-</script>
+</script> -->
 
     
     <script src="./js/main.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
 
     <script src="./js/sidebars.js"></script>
-
+  
   </body>
 </html>

@@ -27,7 +27,7 @@ const uploadRoute = require("./routes/uploadRoute");
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use("/uploads", express.static("uploads"));
+app.use("/upload", express.static("upload"));
 
 
 app.use("/", uploadRoute);
@@ -38,9 +38,11 @@ const pdfRoute = require("./routes/pdfRoute"); // اسم الملف
 app.use("/", pdfRoute);
 
 
+const checkProfRoute = require("./routes/checkProfRoute");
+app.use("/", checkProfRoute);
 
 
-
+ 
 
 // ---------------------------------------------------
 
