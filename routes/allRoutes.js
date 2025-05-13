@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/customerSchema");
 const Etud = require("../models/customerSchema2");
+const file = require("../models/File");
 var moment = require("moment");
+
 // res.render("Etud", { file }); // هذا يحل المشكلة
 
 
@@ -247,5 +249,72 @@ router.put("/editEtud/:id", (req, res) => {
       console.log(err);
     });
 });
+
+
+
+
+// router.post('/searchProf', async (req, res) => {
+//   const searchText = req.body.searchText.trim();
+
+//   try {
+//     const matchedFile = await file.findOne({ firstName: searchText }); // ✅ اسم جديد
+//     const [users, etudiants] = await Promise.all([
+//       User.find(),
+//       Etud.find()
+//     ]);
+
+//     if (!matchedFile) {
+//       return res.render("Etud", {
+//         currentPage: "Etud",
+//         users,
+//         etudiants,
+//         file: null,
+//         files: [],
+//         searchResult: null,
+//         moment,
+//         error: "🚫 الأستاذ غير موجود"
+//       });
+//     }
+
+//     const profFile = {
+//       name: matchedFile.firstname,
+//       _id: matchedFile.fileId
+//     };
+
+//     res.render("Etud", {
+//       currentPage: "Etud",
+//       users,
+//       etudiants,
+//       file: null,
+//       searchResult: [profFile],
+//       files: [],
+//       moment,
+//       error: null
+//     });
+
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send("⚠️ خطأ في السيرفر");
+//   }
+// });
+
+
+
+router.get("/download/:id", async (req, res) => {
+  try {
+    const file = await File.findById(req.params.id);
+    if (!file) return res.status(404).send("الملف غير موجود");
+
+    const filePath = path.join(__dirname, "../uploads", file.filename); // حسب مكان تخزين الملفات
+    res.download(filePath);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("خطأ أثناء تحميل الملف");
+  }
+});
+
+
+
+
 
 module.exports = router;

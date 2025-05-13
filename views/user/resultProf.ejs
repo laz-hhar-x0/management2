@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>نتائج البحث عن الأستاذ</title>
+  <link rel="stylesheet" href="/css/myStyle.css">
+</head>
+<body>
+  <div class="dataEtd">
+    <h1>نتائج البحث</h1>
+    <table class="tablle">
+      <thead>
+        <tr><th>الاسم</th><th>تحميل PDF</th></tr>
+      </thead>
+      <tbody>
+        <% files.forEach(f => { %>
+          <tr>
+            <td><%= f.name %></td>
+            <td>
+              <a href="/download/<%= f._id %>"><button>تحميل PDF</button></a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <br>
+    <a href="/Etud"><button>عودة للبحث</button></a>
+  </div>
+</body>
+</html>

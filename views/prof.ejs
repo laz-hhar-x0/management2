@@ -34,8 +34,8 @@
       border-radius: 25px 25px 2px 2px;
       overflow: hidden;
       width: 400px;
-      height: 600px;
-      margin: 90px auto 0;
+      height: 80vh;
+      margin: 40px auto 0;
       text-align: center;
       direction: ltr;
     }
@@ -135,31 +135,25 @@
 
 
 
-      <!-- Mini modal for code input -->
-          <div id="codePrompt" style="display: none; position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%);
-          background: rgba(65, 73, 85, 0.503); padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); z-index: 1000;">
-            <p style="color: rgb(190, 185, 185); background-color: rgba(65, 73, 85, 0.792);" class="p-1">🔒 Enter code :</p>
-            
-            <!-- <input type="password" id="codeInput" class="form-control mb-2" /> -->
-            <form onsubmit="event.preventDefault(); checkCode();">
-              <input type="password" id="codeInput" class="form-control mb-2" />
-              <button type="submit" class="btn btn-primary">Submit</button>
-              <button type="button" onclick="closePrompt()" class="btn btn-secondary">Cancel</button>
-            </form>
 
-            
-            <!-- <button onclick="checkCode()" class="btn btn-primary">Submit</button>
-            <button onclick="closePrompt()" class="btn btn-secondary">Cancel</button>
-             -->
-            
-          </div>
+ <!-- Mini modal for code input -->
+<div id="codePrompt" style="display: none; position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%);
+  background: rgba(65, 73, 85, 0.503); padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); z-index: 1000;">
+  
+  <p style="color: rgb(190, 185, 185); background-color: rgba(65, 73, 85, 0.792);" class="p-1">🔒 Enter code :</p>
 
+  <input type="password" id="codeInput" class="form-control mb-2" />
+  <button type="button" onclick="checkCode()" class="btn btn-primary">Submit</button>
+  <button type="button" onclick="closePrompt()" class="btn btn-secondary">Cancel</button>
 
-
+</div>
 
     </main>
 
 
+
+
+     
 
 
 
@@ -275,10 +269,14 @@
 </script> -->
 
     
-    <script src="./js/main.js"></script>
+    <script src="/js/main.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
 
     <script src="./js/sidebars.js"></script>
   
   </body>
 </html>
+
+
+
+

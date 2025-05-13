@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const port = 3002;
+const port = 3005;
 const mongoose = require("mongoose");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // هذا مهم لقبول JSON من body
@@ -19,6 +19,14 @@ app.use("/addProf", require("./routes/addUser"));
 const allRoutes = require("./routes/allRoutes");
 const addUserRoute = require("./routes/addUser");
 const addUserRoutee = require("./routes/addUserRoutee");
+
+const Prof = require('./models/customerSchema'); // تأكد من مسار الموديل الصحيح
+
+app.use(express.urlencoded({ extended: true }));
+app.set("view engine", "ejs");
+
+const fileRoutes = require("./routes/fileRoutes");
+app.use("/", fileRoutes);
 
 
 

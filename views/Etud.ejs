@@ -1,3 +1,73 @@
+<!-- <!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>بحث ملفات الأساتذة</title>
+  <link rel="stylesheet" href="/css/myStyle.css">
+
+</head>
+<body>
+  <div class="dataEtd">
+   
+
+    <% if (error) { %>
+      <p style="color:red;"><%= error %></p>
+    <% } %>
+
+    <h2>جميع الملفات</h2>
+    <table class="tablle">
+      <thead>
+        <tr><th>الاسم</th><th>تحميل PDF</th></tr>
+      </thead>
+      <tbody>
+        <% files.forEach(f => { %>
+          <tr>
+            <td><%= f.name %></td>
+            <td>
+              <a href="/download/<%= f._id %>"><button>تحميل PDF</button></a>
+            </td>
+          </tr>
+        <% }) %>
+        <% if (files.length === 0) { %>
+          <tr><td colspan="2">لا توجد ملفات</td></tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+     <style>
+      .dataEtd{
+        color: aliceblue;
+        width: 70%;
+        margin: 20px auto;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .tablle{
+        border-collapse: collapse;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid rgb(7, 116, 254);
+        border-radius: 16px 16px 3px 3px;
+        margin: 0 auto;
+      }
+      .tablle thead tr{
+        background-color: rgb(7, 116, 254);
+      }
+    
+    </style>
+
+
+</body>
+</html> -->
+
+
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
   <head>
