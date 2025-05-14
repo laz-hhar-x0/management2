@@ -78,7 +78,18 @@
       <section class="w-100">
         <%- include('./Components/navbar.ejs') %>
 
+        <br>
 
+           <div class="mininavbar w-75 mx-auto" style="display: flex; justify-content: space-between; ">
+            <h1 style="margin-left: 20px;">List Profs : </h1>
+            
+            <a href="/addProf">
+              <button type="button" class="btn btn-secondary">Add Prof</button>
+            </a>
+
+          
+          </div>
+          
         <% if (users.length === 0) { %>
         <h1 style="text-align: center; margin-top: 4rem;">No data available</h1>
         <% } %>
@@ -88,16 +99,7 @@
         <br>
 
         <% if (users.length > 0) { %>
-          <div class="mininavbar" style="display: flex; justify-content: space-between;">
-            <h1 style="margin-left: 20px;">List Profs : </h1>
-            <!-- <a href="/addProf">
-              <button type="button" class="btn btn-secondary" >Add Prof</button>
-            </a> -->
-            <a href="/addProf">
-              <button type="button" class="btn btn-secondary">Add Prof</button>
-            </a>
-          
-          </div>
+       
 
           
 
@@ -181,7 +183,20 @@
 
           </table>
           <% } %>
+          
+          
+          
+    <br>
+    <hr>
+    <br>
 
+           <div class="mininavbar w-75 mx-auto" style="display: flex; justify-content: space-between;">
+              <h1 style="margin-left: 20px;">List Etudiant : </h1>
+              <a href="/user/addEtud">
+                <button type="button" class="btn btn-secondary" >Add Etud</button>
+              </a>
+
+            </div>
 
 
 
@@ -190,20 +205,14 @@
           <% } %>
   
   
-        
-  <br>
-  <hr>
-  <br>
+
+
+
+         
 
           <% if (etudiants.length > 0) { %>
             
-            <div class="mininavbar" style="display: flex; justify-content: space-between;">
-              <h1 style="margin-left: 20px;">List Etudiant : </h1>
-              <a href="/user/addEtud">
-                <button type="button" class="btn btn-secondary" >Add Etud</button>
-              </a>
-
-            </div>
+           
               
   
             <!-- <form action="/searchEtud" method="post" class="d-flex  w-75 mx-auto mt-5" role="search">

@@ -93,11 +93,25 @@ html {
 
 
 
+.sidebar {
+  z-index: 1040;
+  height: 100vh;
+  position: relative; /* أضف هذا السطر */
+}
+
+
+.btn {
+  margin: 0 auto;
+}
 
 
 
-
-
+@media (max-width: 767.98px) {
+  .offcanvas-start {
+    width: 250px !important; /* اجعل العرض مناسبًا حسب رغبتك */
+    max-width: 80% !important; /* لتفادي تمدد العرض الكامل */
+  }
+}
 
 
 
